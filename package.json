@@ -1,0 +1,27 @@
+{
+  "name": "puppeteer-utils",
+  "version": "1.0.0",
+  "description": "Puppeteer utilities and helper functions",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/index.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "puppeteer",
+    "automation",
+    "utilities",
+    "typescript"
+  ],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/node": "^25.0.3",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "puppeteer": "^24.34.0"
+  }
+}
