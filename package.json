@@ -4,8 +4,8 @@
   "description": "Puppeteer utilities and helper functions",
   "main": "dist/index.js",
   "scripts": {
-    "build": "tsc",
-    "start": "ts-node src/index.ts",
+    "build": "NODE_ENV=production tsc",
+    "start": "NODE_ENV=development ts-node src/index.ts",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [
