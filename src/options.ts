@@ -12,7 +12,9 @@ const options: LaunchOptions = {
       "--disable-notifications",
       "--window-size=1280,720",
       "--disable-blink-features=AutomationControlled",
-      "--disable-features=IsolateOrigins,site-per-process"
+      "--disable-features=IsolateOrigins,site-per-process",
+      `--user-agent=${process.env.CHROME_USER_AGENT || 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36'}`,
+      `--lang=${process.env.CHROME_LANG || 'en-US'}`,
     ],
     defaultViewport: null,
     headless: isProd ? true : false,
