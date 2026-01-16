@@ -19,6 +19,7 @@ const options: LaunchOptions = {
     defaultViewport: null,
     headless: isProd ? true : false,
     devtools: isProd ? false : true,
+    userDataDir: "./profile"
 };
 
 export default options;
