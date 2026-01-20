@@ -1,0 +1,13 @@
+version: '3.8'
+
+services:
+  puppet:
+    image: puppet
+    container_name: puppeteer-utils
+    ports:
+      - "3000:3000"
+    volumes:
+      - ./profile:/app/profile
+      - ./screenshots:/app/screenshots
+    stdin_open: true
+    tty: true

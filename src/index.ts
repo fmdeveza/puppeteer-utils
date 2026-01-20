@@ -8,7 +8,7 @@ async function main() {
   const browser = await puppeteer.launch(options);
   const page = await browser.newPage();
   await page.goto('https://developer.chrome.com/');
-  await page.screenshot({ path: 'screenshot.png' });
+  await page.screenshot({ path: './screenshots/screenshot.png' });
   await browser.close();
 }
 
