@@ -16,12 +16,25 @@ const wait4ever = async () => {
 }
 
 async function main() {
-  // console.log(process.env);
+  console.log("Starting main execution...");
+  console.log("Env variables:", process.env);
+  console.log("Puppeteer options:", options);
   const browser = await puppeteer.launch(options);
-  const page = await browser.newPage();
-  await page.goto('https://developer.chrome.com/');
-  await page.screenshot({ path: './screenshots/screenshot.png' });
-  await browser.close();
+  try {
+    const page = await browser.newPage();
+    await page.goto('https://developer.chrome.com/');
+    await wait4ever();
+    await printDebug(page);
+  } catch (error) {
+    console.error("Error in main execution:", error);
+    throw error;
+  } finally {
+    await browser.close();
+    console.info("Main execution finished.");
+  }
 }
 
-main();
+main().catch((error) => {
+  console.error("Fatal error:", error);
+  process.exit(1);
+});
