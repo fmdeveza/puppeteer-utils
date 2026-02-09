@@ -15,6 +15,20 @@ const wait4ever = async () => {
   await new Promise(() => {});
 }
 
+const print = async (page: Page, label: string) => {
+  const path = `./screenshots/${label}.png`
+  console.log("Saving screenshot to:", path);
+  await page.screenshot({ path });
+}
+
+const printDebug = async (page: Page) => {
+  // const dateTimestamp = new Date().toISOString().replace(/[:.]/g, '-');
+  const timestamp = new Date().valueOf().toString();
+  await print(page, `debug-${timestamp}`);
+}
+
+
+
 async function main() {
   console.log("Starting main execution...");
   console.log("Env variables:", process.env);
