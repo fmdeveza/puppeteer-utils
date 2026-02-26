@@ -37,4 +37,8 @@ if (REMOTE_DEBUG) {
   );
 }
 
+if (process.env.VPN_HOST) {
+  options.args?.push(`--proxy-server=${process.env.VPN_HOST}`);
+}
+
 export default options;

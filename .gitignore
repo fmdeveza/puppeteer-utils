@@ -1,6 +1,9 @@
 # Chrome profile
 profile*
 
+# Screenshots
+*.png
+
 # Logs
 logs
 *.log

@@ -1,7 +1,10 @@
 import 'dotenv/config';
 import puppeteer from 'puppeteer';
 import type { Page } from 'puppeteer';
+import fs from 'fs';
+import path from 'path';
 
+import launch from './launch';
 import options from './options';
 
 
@@ -32,11 +35,9 @@ const printDebug = async (page: Page) => {
 async function main() {
   console.log("Starting main execution...");
   console.log("Env variables:", process.env);
-  console.log("Puppeteer options:", options);
-  const browser = await puppeteer.launch(options);
+  const [browser, page] = await launch();
   try {
-    const page = await browser.newPage();
-    await page.goto('https://developer.chrome.com/');
+    await page.goto('https://google.com');
     await wait4ever();
     await printDebug(page);
   } catch (error) {
