@@ -5,6 +5,11 @@ const REMOTE_DEBUG = process.env.REMOTE_DEBUG === "true" || process.env.REMOTE_D
 const CHROME_USER_AGENT = process.env.CHROME_USER_AGENT || "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36";
 const CHROME_LANG = process.env.CHROME_LANG || "en-US";
 const CHROME_BIN = process.env.CHROME_BIN || "";
+export const VPN_ENABLED: boolean = (
+  process.env.VPN_ENABLED === 'true' || process.env.VPN_ENABLED === '1'
+) && Boolean(process.env.VPN_HOST)
+  && Boolean(process.env.VPN_USERNAME)
+  && Boolean(process.env.VPN_PASSWORD);
 
 const options: LaunchOptions = {
   defaultViewport: null,
@@ -28,7 +33,7 @@ const options: LaunchOptions = {
     `--user-agent=${CHROME_USER_AGENT}`,
     `--lang=${CHROME_LANG}`,
     ...(REMOTE_DEBUG ? ["--remote-debugging-address=0.0.0.0", "--remote-debugging-port=9222"] : []),
-    ...(process.env.VPN_HOST ? [`--proxy-server=${process.env.VPN_HOST}`] : []),
+    ...(VPN_ENABLED ? [`--proxy-server=${process.env.VPN_HOST}`] : []),
   ],
 };
 
