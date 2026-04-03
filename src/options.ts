@@ -11,7 +11,7 @@ export const VPN_ENABLED: boolean = (
   && Boolean(process.env.VPN_USERNAME)
   && Boolean(process.env.VPN_PASSWORD);
 
-const options: LaunchOptions = {
+export const options: LaunchOptions = {
   defaultViewport: null,
   userDataDir: "./profile",
   ...(CHROME_BIN && { executablePath: CHROME_BIN }),
