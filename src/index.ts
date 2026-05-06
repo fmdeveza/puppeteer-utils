@@ -32,3 +32,16 @@ export const printDebug = async (page: Page) => {
   const timestamp = new Date().valueOf().toString();
   await print(page, `debug-${timestamp}`);
 }
+
+
+export const getContent = async (page: Page) => {
+  const data = await page.evaluate(() => {
+    return {
+      title: document.title,
+      url: location.href,
+      textContent: document.body?.innerText?.trim().slice(0, 5000) ?? '',
+    };
+  });
+
+  return data;
+}
